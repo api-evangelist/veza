@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: github.com/veza/oaaclient-py (README) + developer.veza.com
+name: oaaclient
+description: >-
+  Command-line interface bundled with the Veza Open Authorization API Python SDK
+  (the oaaclient package) for pushing completed OAA payloads to a Veza tenant
+  without hand-crafting API requests — useful for testing and debugging.
+install:
+  - method: pip
+    command: pip install oaaclient
+invocation: oaaclient
+config_files:
+  - name: provider.json
+    purpose: Provider name and template to use (application or idp).
+  - name: auth.json
+    purpose: Veza host and API key used for the connection.
+capabilities:
+  - Create/select a custom provider and data source.
+  - Push a completed OAA JSON payload to a data source.
+  - Validate/debug payloads before integrating programmatically.
+notes: >-
+  There is also a separate veza-cli-tools JavaScript repository in the GitHub org
+  (github.com/veza/veza-cli-tools); the primary supported CLI ships inside the
+  Python oaaclient package.

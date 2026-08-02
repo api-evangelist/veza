@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: derived
+source: github.com/veza/oaaclient-py (client.py + templates.py) + developer.veza.com
+note: >-
+  Derived from the Open Authorization API SDK operations and OAA payload
+  templates. Veza ingests OAA payloads into its Entity Catalog; the REST surface
+  manages custom providers, their data sources, and assessment queries/reports.
+entities:
+  - name: CustomProvider
+    endpoint: /api/v1/providers/custom
+    description: A custom application or identity-provider integration registered in the tenant.
+    relationships:
+      - type: has_many
+        target: DataSource
+        via: provider_id
+  - name: DataSource
+    endpoint: /api/v1/providers/custom/{provider_id}/datasources
+    description: A named data source under a provider that receives pushed OAA metadata.
+    relationships:
+      - type: belongs_to
+        target: CustomProvider
+        via: provider_id
+  - name: OAAPayload
+    description: >-
+      The JSON metadata document pushed to a data source. Modeled by the SDK as
+      a CustomApplication (or IdP) containing users, groups, roles, resources and
+      permissions.
+    pushed_to: /api/v1/providers/custom/{provider_id}/datasources/{data_source_id}:push
+    relationships:
+      - type: has_many
+        target: LocalUser
+      - type: has_many
+        target: LocalGroup
+      - type: has_many
+        target: LocalRole
+      - type: has_many
+        target: Resource
+      - type: has_many
+        target: Permission
+  - name: AssessmentQuery
+    endpoint: /api/v1/assessments/queries
+    description: A saved authorization query evaluated against the Entity Catalog.
+  - name: Report
+    endpoint: /api/preview/assessments/reports
+    description: A report grouping one or more assessment queries.
+    relationships:
+      - type: has_many
+        target: AssessmentQuery
+        via: query_id

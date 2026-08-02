@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: github.com/veza (webhook-to-siem-serverless, webhook-to-siem-azure-function) + developer.veza.com
+spec_type: Webhooks
+description: >-
+  Veza can emit alert/notification events to external systems via outbound
+  webhooks. The company publishes reference integrations that receive Veza
+  webhook events and forward them to SIEM platforms. No AsyncAPI document is
+  published; this captures the webhook (event push) surface.
+webhooks:
+  - name: alert-notification
+    direction: outbound
+    transport: https-post
+    payload: json
+    description: Veza posts alert/rule notification events to a configured webhook endpoint.
+reference_integrations:
+  - name: webhook-to-siem-serverless
+    url: https://github.com/veza/webhook-to-siem-serverless
+    description: Serverless receiver that forwards Veza webhook events to a SIEM.
+  - name: webhook-to-siem-azure-function
+    url: https://github.com/veza/webhook-to-siem-azure-function
+    description: Azure Function receiver that forwards Veza webhook events to a SIEM.

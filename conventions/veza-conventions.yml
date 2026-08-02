@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: searched
+source: developer.veza.com + github.com/veza/oaaclient-py (oaaclient/client.py)
+authentication:
+  style: bearer-api-key
+  header: Authorization
+  ref: authentication/veza-authentication.yml
+base_url:
+  pattern: https://{tenant}.vezacloud.com
+  api_paths: [/api/v1, /api/preview]
+  note: Per-tenant SaaS host; every call targets the customer's own Veza instance.
+versioning:
+  scheme: uri-path
+  stable: v1
+  preview: preview
+  note: Stable operations live under /api/v1; newer surfaces (e.g. assessment reports) live under /api/preview.
+  ref: lifecycle/veza-lifecycle.yml
+idempotency:
+  supported: false
+  note: No documented idempotency-key mechanism on the OAA REST surface. Payload pushes are declarative full/incremental replacements of a data source's metadata rather than idempotency-keyed mutations.
+request_tracing:
+  supported: true
+  fields: [request_id, timestamp]
+  note: Error responses include request_id and timestamp for support correlation.
+rate_limiting:
+  signaled: true
+  status: 429
+  handling: SDK retries 429 (and 500/502/503/504) with exponential backoff (status_forcelist).
+  ref: errors/veza-problem-types.yml
+payload_limits:
+  max_payload_bytes: 104857600
+  compression: supported
+  multipart: true
+  note: Payloads over 100MB are rejected (OVERSIZE); large pushes can be chunked via the multipart ":parts" endpoint with gzip compression.
+error_envelope:
+  format: custom-json
+  fields: [code, message, details, request_id, timestamp]
+  ref: errors/veza-problem-types.yml
+data_model:
+  ref: data-model/veza-data-model.yml

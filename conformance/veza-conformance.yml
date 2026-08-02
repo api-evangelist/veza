@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: derived
+source: github.com/veza/oaaclient-py + developer.veza.com
+standards:
+  - id: rest
+    conforms: true
+    evidence: Resource-oriented HTTP API under /api/v1 (providers, datasources, assessments).
+  - id: json
+    conforms: true
+    evidence: Requests and responses are JSON; OAA payloads are JSON documents.
+  - id: apikey-auth
+    conforms: true
+    evidence: Bearer API-key authentication in the Authorization header.
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 flow exposed on the OAA REST surface.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom JSON envelope (code/message/details/request_id/timestamp), not application/problem+json.
+  - id: rfc8594-sunset
+    conforms: false

@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: github.com/veza/oaaclient-py (client.py operations)
+note: >-
+  No official hosted/remote Veza MCP server was found in the docs, the npm
+  @modelcontextprotocol namespace, or public MCP registries as of this pass.
+  The tool list below is a candidate derived from the Open Authorization API
+  operations exposed by the official Python SDK, for a future MCP wrapper.
+server:
+  name: veza
+  transport: stdio
+tools:
+  - name: list_custom_providers
+    description: List custom OAA providers in the tenant.
+    source_operation: GET /api/v1/providers/custom
+  - name: create_custom_provider
+    description: Create a custom OAA provider from a template (application or idp).
+    source_operation: POST /api/v1/providers/custom
+  - name: get_custom_provider
+    description: Get a custom provider by id.
+    source_operation: GET /api/v1/providers/custom/{provider_id}
+  - name: delete_custom_provider
+    description: Delete a custom provider.
+    source_operation: DELETE /api/v1/providers/custom/{provider_id}
+  - name: list_data_sources
+    description: List data sources under a provider.
+    source_operation: GET /api/v1/providers/custom/{provider_id}/datasources
+  - name: create_data_source
+    description: Create a data source under a provider.
+    source_operation: POST /api/v1/providers/custom/{provider_id}/datasources
+  - name: push_oaa_metadata
+    description: Push an OAA JSON payload (users, resources, permissions) to a data source.
+    source_operation: POST /api/v1/providers/custom/{provider_id}/datasources/{data_source_id}:push
+  - name: list_assessment_queries
+    description: List saved authorization assessment queries.
+    source_operation: GET /api/v1/assessments/queries
+  - name: create_assessment_query
+    description: Create an authorization assessment query.
+    source_operation: POST /api/v1/assessments/queries
+  - name: list_reports
+    description: List assessment reports.
+    source_operation: GET /api/preview/assessments/reports

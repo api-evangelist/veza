@@ -1,0 +1,12 @@
+generated: '2026-07-21'
+method: generated
+source: github.com/veza/oaaclient-py operations
+skills:
+  - file: veza-publish-oaa-payload.md
+    name: Publish an OAA payload to Veza
+    api: Veza Open Authorization API (OAA)
+    operations: [create_custom_provider, create_data_source, push_oaa_metadata]
+  - file: veza-run-assessment-query.md
+    name: Run a Veza assessment query and report
+    api: Veza Open Authorization API (OAA)
+    operations: [create_assessment_query, list_assessment_queries, create_report, list_reports]

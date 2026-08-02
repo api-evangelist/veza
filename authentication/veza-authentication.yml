@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.veza.com/ + github.com/veza/oaaclient-py (oaaclient/client.py)
+docs: https://developer.veza.com/oaa/guide/getting-started.html
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+  notes: >-
+    Veza's Open Authorization API authenticates with a per-tenant API key
+    presented as a bearer token in the Authorization header. Each request is
+    made against the customer's own Veza tenant host (https://<tenant>.vezacloud.com).
+    No OAuth2 or OpenID Connect flow is exposed on the OAA REST surface.
+schemes:
+  - name: VezaApiKey
+    type: http
+    scheme: bearer
+    in: header
+    header: Authorization
+    description: >-
+      API key issued from the Veza console, sent as `Authorization: Bearer <api_key>`.
+      The oaaclient SDK constructs the connection as OAAClient(url=veza_url, token=veza_api_key);
+      a missing URL or key is rejected client-side (MISSING_URL / MISSING_AUTH) before any request.
+    sources: [github.com/veza/oaaclient-py/oaaclient/client.py]

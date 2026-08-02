@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.veza.com/ + PyPI + github.com/veza
+packages:
+  - language: python
+    registry: pypi
+    name: oaaclient
+    url: https://pypi.org/project/oaaclient/
+    install: pip install oaaclient
+    version: 1.1.16
+    repository: https://github.com/veza/oaaclient-py
+    description: Veza Open Authorization API (OAA) SDK — data models, methods and a command-line interface for building and pushing OAA payloads to a Veza tenant.
+    official: true
+  - language: csharp
+    registry: github
+    name: oaaclient-csharp
+    url: https://github.com/veza/oaaclient-csharp
+    install: build Veza.sln from source (Veza.OAA.Client / Veza.Sdk.Client namespaces)
+    repository: https://github.com/veza/oaaclient-csharp
+    description: Veza Open Authorization API (OAA) C# SDK — base REST client (Veza.Sdk.Client) and OAA client (Veza.OAA.Client) for pushing OAA metadata to a Veza tenant. Source-only; not published to NuGet as of this pass.
+    official: true

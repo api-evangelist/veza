@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: searched
+source: github.com/veza/oaaclient-py (oaaclient/client.py OAAResponseError / OAAClientError)
+format: custom-json
+envelope:
+  description: >-
+    Errors returned by the Veza API are JSON objects surfaced by the SDK as
+    OAAResponseError. The response carries a machine code, a human message, an
+    optional details[] list, and correlation fields (request_id, timestamp) for
+    support and tracing.
+  fields:
+    - code
+    - message
+    - details
+    - request_id
+    - timestamp
+problems:
+  - status: 401
+    code: UNAUTHORIZED
+    title: Invalid or missing API key
+    remediation: Provide a valid per-tenant API key as a bearer token in the Authorization header.
+  - status: 404
+    code: NOT_FOUND
+    title: Provider, data source, query, or report not found
+    remediation: Verify the provider/data source/report identifier exists in the target tenant.
+  - status: 429
+    code: RATE_LIMITED
+    title: Too many requests
+    remediation: The SDK automatically retries 429 responses with exponential backoff; back off and retry.
+  - status: 500
+    code: INTERNAL_ERROR
+    title: Server error
+    remediation: Transient; the SDK retries 500/502/503/504 with backoff.
+  - status: 502
+    code: BAD_GATEWAY
+    title: Bad gateway
+    remediation: Transient; retried with backoff.
+  - status: 503
+    code: SERVICE_UNAVAILABLE
+    title: Service unavailable
+    remediation: Transient; retried with backoff.
+  - status: 504
+    code: GATEWAY_TIMEOUT
+    title: Gateway timeout
+    remediation: Transient; retried with backoff.
+client_errors:
+  - code: MISSING_URL
+    title: Veza tenant URL was not supplied to the client.
+  - code: MISSING_AUTH
+    title: API key was not supplied to the client.
+  - code: NO_PROVIDER
+    title: Cannot push payload — the named custom provider does not exist yet.
+  - code: INVALID_APP
+    title: Cannot create a provider for an application object without a template.
+  - code: OVERSIZE
+    title: Payload exceeds the maximum size of 100MB (compression available).

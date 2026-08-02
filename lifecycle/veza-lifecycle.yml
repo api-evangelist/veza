@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: searched
+source: developer.veza.com + status.veza.com
+versioning:
+  scheme: uri-path
+  stable: v1
+  preview: preview
+  docs: https://developer.veza.com/oaa/reference/api/oaa-push-api.html
+  note: Stable OAA operations under /api/v1; preview surfaces (assessment reports) under /api/preview.
+status_page: https://status.veza.com/
+status_page_vendor: Atlassian Statuspage
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No public deprecation policy or RFC 8594 Sunset/Deprecation header support found on the OAA surface as of this pass.
+deprecated_operations: []

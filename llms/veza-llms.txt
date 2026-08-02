@@ -1,0 +1,38 @@
+# Veza
+
+> Veza is an identity security platform. Its Open Authorization API (OAA) lets
+> you publish identity, resource, and authorization metadata from custom or
+> unsupported applications into the Veza Entity Catalog, making them searchable
+> and governable alongside natively supported integrations. Authentication is a
+> per-tenant API key sent as a bearer token; all calls target the customer's own
+> Veza tenant host (https://<tenant>.vezacloud.com).
+
+## Developer
+
+- [Veza Developers](https://developer.veza.com/): Open Authorization API documentation.
+- [Getting Started](https://developer.veza.com/oaa/guide/getting-started.html)
+- [Quickstart](https://developer.veza.com/oaa/guide/quickstarts.html)
+- [OAA Push API Reference](https://developer.veza.com/oaa/reference/api/oaa-push-api.html)
+- [Example Connectors](https://developer.veza.com/oaa/guide/examples.html)
+
+## SDKs & CLI
+
+- [Python SDK (oaaclient)](https://pypi.org/project/oaaclient/) — `pip install oaaclient` (github.com/veza/oaaclient-py). Includes the `oaaclient` CLI.
+- [.NET / C# SDK (oaaclient-csharp)](https://github.com/veza/oaaclient-csharp) — source build; Veza.OAA.Client / Veza.Sdk.Client.
+- [OAA community connectors](https://github.com/veza/oaa-community)
+
+## API surface
+
+- Custom providers: /api/v1/providers/custom
+- Data sources: /api/v1/providers/custom/{provider_id}/datasources
+- Push metadata: /api/v1/providers/custom/{provider_id}/datasources/{data_source_id}:push
+- Assessment queries: /api/v1/assessments/queries
+- Reports (preview): /api/preview/assessments/reports
+
+## Operational
+
+- [Status](https://status.veza.com/) (Atlassian Statuspage)
+- [Blog](https://www.veza.com/blog)
+- [Privacy Policy](https://www.veza.com/privacy-policy/)
+- [Request a demo](https://www.veza.com/demo/)
+- [GitHub org](https://github.com/veza)
